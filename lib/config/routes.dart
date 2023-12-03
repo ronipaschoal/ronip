@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:ronip/pages/home/home_screen.dart';
-import 'package:ronip/ui/scaffold.dart';
+import 'package:ronip/ui/widgets/scaffold.dart';
 
-class RpRoutes {
-  RpRoutes._();
-
+sealed class RpRoutes {
   static const String home = '/';
 
   static CustomTransitionPage _customTransitionPage(Widget page) {

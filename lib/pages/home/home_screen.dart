@@ -1,19 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:ronip/config/navigate.dart';
 import 'package:ronip/config/routes.dart';
-import 'package:ronip/ui/logo.dart';
+import 'package:ronip/ui/widgets/logo.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
-  Widget _body(BuildContext context) {
-    return Column(
+  @override
+  Widget build(BuildContext context) {
+    return const Column(
       crossAxisAlignment: CrossAxisAlignment.center,
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        const RpLogo(),
-        const SizedBox(height: 16.0),
-        const SelectableText(
+        RpLogo(),
+        SizedBox(height: 16.0),
+        SelectableText(
           'Roni Paschoal',
           semanticsLabel: 'Roni Paschoal',
           style: TextStyle(
@@ -25,7 +26,4 @@ class HomeScreen extends StatelessWidget {
       ],
     );
   }
-
-  @override
-  Widget build(BuildContext context) => _body(context);
 }

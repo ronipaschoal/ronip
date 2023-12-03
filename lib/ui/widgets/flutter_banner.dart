@@ -11,7 +11,8 @@ class RpFlutterBanner extends StatelessWidget {
   static const String _message = 'Flutter';
   static const Color _bannerColor = Colors.blue;
 
-  Widget get _body {
+  @override
+  Widget build(BuildContext context) {
     return Banner(
       location: BannerLocation.topEnd,
       message: _message,
@@ -19,7 +20,4 @@ class RpFlutterBanner extends StatelessWidget {
       child: child,
     );
   }
-
-  @override
-  Widget build(BuildContext context) => _body;
 }

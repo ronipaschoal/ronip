@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-class RpNavigate {
-  RpNavigate._();
-
+sealed class RpNavigate {
   static void to(
     BuildContext context,
     String route, [
