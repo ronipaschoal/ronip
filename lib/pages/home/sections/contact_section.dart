@@ -16,11 +16,19 @@ class ContactSection extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             SelectableText(
-              'Contact',
-              semanticsLabel: 'Contact',
+              'Entre em contato',
+              semanticsLabel: 'Entre em contato',
               style: TextStyle(
                 color: RpTheme.witheColor,
                 fontSize: 42.0,
+              ),
+            ),
+            SelectableText(
+              'contato@ronip.dev',
+              semanticsLabel: 'contato@ronip.dev',
+              style: TextStyle(
+                color: RpTheme.witheColor,
+                fontSize: 16.0,
               ),
             ),
           ],

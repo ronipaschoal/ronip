@@ -5,4 +5,5 @@ sealed class RpTheme {
 
   static const Color brandColor = Color(0xFF1A73E8);
   static const Color backgroundColor = Color(0xFF0A192F);
+  static const Color backgroundColorDark = Color(0xFF040C19);
 }

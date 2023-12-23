@@ -21,6 +21,10 @@ class HomeSection extends StatelessWidget {
             SelectableText(
               'Olá, eu sou',
               semanticsLabel: 'Olá, eu sou',
+              style: TextStyle(
+                color: RpTheme.witheColor,
+                fontSize: 24.0,
+              ),
             ),
             SelectableText(
               'Roni Paschoal',
@@ -29,6 +33,14 @@ class HomeSection extends StatelessWidget {
                 fontFamily: 'Inkburrow',
                 color: RpTheme.witheColor,
                 fontSize: 42.0,
+              ),
+            ),
+            SelectableText(
+              'Especialista Flutter',
+              semanticsLabel: 'Olá, eu sou',
+              style: TextStyle(
+                color: RpTheme.witheColor,
+                fontSize: 24.0,
               ),
             ),
           ],

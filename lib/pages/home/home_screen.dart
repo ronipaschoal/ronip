@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:ronip/helpers/media_query_helper.dart';
+import 'package:ronip/pages/home/home_drawer.dart';
+import 'package:ronip/pages/home/home_menu.dart';
+import 'package:ronip/pages/home/home_web_menu.dart';
 import 'package:ronip/pages/home/sections/about_section.dart';
 import 'package:ronip/pages/home/sections/contact_section.dart';
 import 'package:ronip/pages/home/sections/home_section.dart';
@@ -16,8 +20,11 @@ class HomeScreen extends StatefulWidget {
   State<HomeScreen> createState() => _HomeScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
+  final _drawerKey = GlobalKey<ScaffoldState>();
   final _scrollController = ScrollController();
+
+  HomeMenu? homeMenu;
 
   final _homeKey = GlobalKey();
   final _aboutKey = GlobalKey();
@@ -29,14 +36,36 @@ class _HomeScreenState extends State<HomeScreen> {
   double _workPosition = 0.0;
   double _contactPosition = 0.0;
 
-  Future<void> _launchLinkedin() async {
-    final url = Uri.parse('https://www.linkedin.com/in/roni-paschoal/');
-    if (!await launchUrl(url)) {
-      throw Exception('Could not launch $url');
-    }
+  List<HomeMenu> _getMenuList() {
+    return [
+      HomeMenu(
+        key: _homeKey,
+        title: 'Home',
+        position: _homePosition,
+        selectSection: _selectSection,
+      ),
+      HomeMenu(
+        key: _aboutKey,
+        title: 'About',
+        position: _aboutPosition,
+        selectSection: _selectSection,
+      ),
+      HomeMenu(
+        key: _workKey,
+        title: 'Work',
+        position: _workPosition,
+        selectSection: _selectSection,
+      ),
+      HomeMenu(
+        key: _contactKey,
+        title: 'Contact',
+        position: _contactPosition,
+        selectSection: _selectSection,
+      ),
+    ];
   }
 
-  double _gtSectionPosition(GlobalKey key) {
+  double _getSectionPosition(GlobalKey key) {
     final RenderObject? renderObject = key.currentContext?.findRenderObject();
     if (renderObject is RenderBox) {
       return renderObject.localToGlobal(Offset.zero).dy;
@@ -45,6 +74,7 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   void _selectSection(double position) {
+    _drawerKey.currentState?.closeDrawer();
     _scrollController.animateTo(
       position,
       duration: const Duration(milliseconds: 500),
@@ -52,14 +82,41 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
+  List<Widget> _getExternalMenuList() {
+    return [
+      IconButton(
+        onPressed: () =>
+            _selectLink('https://www.linkedin.com/in/roni-paschoal/'),
+        icon: SvgPicture.asset(
+          'assets/images/logos/linkedin.svg',
+          width: 16,
+          height: 16,
+          colorFilter: const ColorFilter.mode(
+            RpTheme.witheColor,
+            BlendMode.srcIn,
+          ),
+        ),
+      ),
+    ];
+  }
+
+  void _selectLink(String link) async {
+    final url = Uri.parse(link);
+    if (!await launchUrl(url)) {
+      throw Exception('Could not launch $url');
+    }
+  }
+
   @override
   void initState() {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      _homePosition = _gtSectionPosition(_homeKey);
-      _aboutPosition = _gtSectionPosition(_aboutKey);
-      _workPosition = _gtSectionPosition(_workKey);
-      _contactPosition = _gtSectionPosition(_contactKey);
+      setState(() {
+        _homePosition = _getSectionPosition(_homeKey);
+        _aboutPosition = _getSectionPosition(_aboutKey);
+        _workPosition = _getSectionPosition(_workKey);
+        _contactPosition = _getSectionPosition(_contactKey);
+      });
     });
   }
 
@@ -70,58 +127,54 @@ class _HomeScreenState extends State<HomeScreen> {
       width: double.infinity,
       child: RpFlutterBanner(
         child: Scaffold(
+          key: _drawerKey,
           extendBody: true,
           extendBodyBehindAppBar: true,
+          drawer: MediaQueryHelper(context).isSmallScreen()
+              ? HomeDrawer(
+                  menuList: _getMenuList(),
+                  externalMenuList: _getExternalMenuList(),
+                )
+              : null,
           appBar: AppBar(
-            title: const SizedBox(
-              width: 48.0,
-              child: RpLogo(),
-            ),
-            backgroundColor: Colors.transparent,
-            actions: [
-              TextButton(
-                child: const Text(
-                  'Home',
-                  style: TextStyle(color: RpTheme.witheColor),
-                ),
-                onPressed: () => _selectSection(_homePosition),
-              ),
-              TextButton(
-                child: const Text(
-                  'About',
-                  style: TextStyle(color: RpTheme.witheColor),
-                ),
-                onPressed: () => _selectSection(_aboutPosition),
-              ),
-              TextButton(
-                child: const Text(
-                  'Work',
-                  style: TextStyle(color: RpTheme.witheColor),
-                ),
-                onPressed: () => _selectSection(_workPosition),
-              ),
-              TextButton(
-                child: const Text(
-                  'Contact',
-                  style: TextStyle(color: RpTheme.witheColor),
-                ),
-                onPressed: () => _selectSection(_contactPosition),
-              ),
-              const SizedBox(width: 16.0),
-              IconButton(
-                onPressed: _launchLinkedin,
-                icon: SvgPicture.asset(
-                  'assets/images/logos/linkedin.svg',
-                  width: 16,
-                  height: 16,
-                  colorFilter: const ColorFilter.mode(
-                    RpTheme.witheColor,
-                    BlendMode.srcIn,
+            automaticallyImplyLeading: false,
+            title: MediaQueryHelper(context).isSmallScreen()
+                ? null
+                : const SizedBox(
+                    width: 48.0,
+                    child: RpLogo(),
                   ),
-                ),
-              ),
-              const SizedBox(width: 48.0),
-            ],
+            leading: MediaQueryHelper(context).isSmallScreen()
+                ? Builder(
+                    builder: (BuildContext context) {
+                      return IconButton(
+                        icon: Container(
+                          width: 48.0,
+                          decoration: const BoxDecoration(
+                            image: DecorationImage(
+                              image: AssetImage(
+                                  'assets/images/logos/logo-menu.png'),
+                              fit: BoxFit.scaleDown,
+                            ),
+                          ),
+                        ),
+                        onPressed: () => _drawerKey.currentState?.openDrawer(),
+                        tooltip: MaterialLocalizations.of(context)
+                            .openAppDrawerTooltip,
+                      );
+                    },
+                  )
+                : null,
+            backgroundColor: Colors.transparent,
+            actions: MediaQueryHelper(context).isSmallScreen()
+                ? null
+                : [
+                    HomeWebMenu(
+                      menuList: _getMenuList(),
+                      externalMenuList: _getExternalMenuList(),
+                    ),
+                    const SizedBox(width: 42.0)
+                  ],
           ),
           body: SingleChildScrollView(
             controller: _scrollController,

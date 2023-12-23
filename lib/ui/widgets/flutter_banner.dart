@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ronip/ui/theme.dart';
 
 class RpFlutterBanner extends StatelessWidget {
   final Widget child;
@@ -9,15 +10,20 @@ class RpFlutterBanner extends StatelessWidget {
   });
 
   static const String _message = 'Flutter';
-  static const Color _bannerColor = Colors.blue;
+  static const Color _bannerColor = RpTheme.brandColor;
 
   @override
   Widget build(BuildContext context) {
-    return Banner(
-      location: BannerLocation.topEnd,
-      message: _message,
-      color: _bannerColor,
-      child: child,
+    return Container(
+      color: RpTheme.backgroundColorDark,
+      child: SafeArea(
+        child: Banner(
+          location: BannerLocation.topEnd,
+          message: _message,
+          color: _bannerColor,
+          child: child,
+        ),
+      ),
     );
   }
 }
