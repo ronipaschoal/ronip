@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:ronip/helpers/media_query_helper.dart';
 import 'package:ronip/pages/home/home_drawer.dart';
@@ -40,25 +41,25 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
     return [
       HomeMenu(
         key: _homeKey,
-        title: 'Home',
+        title: AppLocalizations.of(context)!.home,
         position: _homePosition,
         selectSection: _selectSection,
       ),
       HomeMenu(
         key: _aboutKey,
-        title: 'About',
+        title: AppLocalizations.of(context)!.about,
         position: _aboutPosition,
         selectSection: _selectSection,
       ),
       HomeMenu(
         key: _workKey,
-        title: 'Work',
+        title: AppLocalizations.of(context)!.portfolio,
         position: _workPosition,
         selectSection: _selectSection,
       ),
       HomeMenu(
         key: _contactKey,
-        title: 'Contact',
+        title: AppLocalizations.of(context)!.contact,
         position: _contactPosition,
         selectSection: _selectSection,
       ),

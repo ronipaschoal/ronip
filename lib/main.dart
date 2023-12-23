@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:ronip/config/routes.dart';
 import 'package:ronip/ui/theme.dart';
 
@@ -16,6 +18,16 @@ class MyApp extends StatelessWidget {
         title: _title,
         debugShowCheckedModeBanner: false,
         routerConfig: RpRoutes.router,
+        localizationsDelegates: const [
+          AppLocalizations.delegate,
+          GlobalMaterialLocalizations.delegate,
+          GlobalWidgetsLocalizations.delegate,
+          GlobalCupertinoLocalizations.delegate,
+        ],
+        supportedLocales: const [
+          Locale('pt', 'BR'),
+          Locale('en', 'US'),
+        ],
         theme: ThemeData(
           colorScheme: ColorScheme.fromSeed(seedColor: RpTheme.brandColor),
           useMaterial3: true,

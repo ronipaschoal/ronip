@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:ronip/ui/theme.dart';
 import 'package:ronip/ui/widgets/logo.dart';
 
@@ -12,21 +13,21 @@ class HomeSection extends StatelessWidget {
       width: MediaQuery.sizeOf(context).width,
       child: Container(
         color: RpTheme.backgroundColor,
-        child: const Column(
+        child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            RpLogo(),
-            SizedBox(height: 16.0),
+            const RpLogo(),
+            const SizedBox(height: 16.0),
             SelectableText(
-              'Olá, eu sou',
-              semanticsLabel: 'Olá, eu sou',
-              style: TextStyle(
+              AppLocalizations.of(context)!.wellcome,
+              semanticsLabel: AppLocalizations.of(context)!.wellcome,
+              style: const TextStyle(
                 color: RpTheme.witheColor,
                 fontSize: 24.0,
               ),
             ),
-            SelectableText(
+            const SelectableText(
               'Roni Paschoal',
               semanticsLabel: 'Roni Paschoal',
               style: TextStyle(
@@ -36,9 +37,9 @@ class HomeSection extends StatelessWidget {
               ),
             ),
             SelectableText(
-              'Especialista Flutter',
-              semanticsLabel: 'Olá, eu sou',
-              style: TextStyle(
+              AppLocalizations.of(context)!.flutterSpecialist,
+              semanticsLabel: AppLocalizations.of(context)!.flutterSpecialist,
+              style: const TextStyle(
                 color: RpTheme.witheColor,
                 fontSize: 24.0,
               ),
