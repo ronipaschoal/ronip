@@ -10,19 +10,40 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  flutter_localizations:
+    sdk: flutter
 
   go_router: ^13.0.0
   flutter_svg: ^2.0.9
   url_launcher: ^6.2.2
   intl: ^0.18.1
-  flutter_localizations:
-    sdk: flutter
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
 
   flutter_lints: ^3.0.1
+  flutter_launcher_icons: ^0.13.1
+
+flutter_launcher_icons:
+  android: "launcher_icon"
+  ios: true
+  image_path: "assets/images/icon/icon.png"
+  min_sdk_android: 21
+  adaptive_icon_background: "assets/images/icon/background.png" 
+  adaptive_icon_foreground: "assets/images/icon/icon.png" 
+  web:
+    generate: true
+    image_path: "assets/images/logos/logo-shadow.png"
+    background_color: "#040C19"
+    theme_color: "#040C19"
+  windows:
+    generate: true
+    image_path: "assets/images/icon/icon.png"
+    icon_size: 48
+  macos:
+    generate: true
+    image_path: "assets/images/icon/icon.png"
 
 flutter:
   generate: true

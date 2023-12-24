@@ -162,7 +162,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                       menuList: _getMenuList(),
                       externalMenuList: _getExternalMenuList(),
                     ),
-                    const SizedBox(width: 42.0)
+                    const SizedBox(width: 42.0),
                   ],
           ),
           body: SingleChildScrollView(
