@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ronip/ui/widgets/asset_image.dart';
 
 class RpLogo extends StatelessWidget {
   final Size size;
@@ -9,15 +10,10 @@ class RpLogo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return RpAssetImage(
+      asset: 'assets/images/logos/logo.png',
       width: size.width,
       height: size.height,
-      decoration: const BoxDecoration(
-        image: DecorationImage(
-          image: AssetImage('assets/images/logos/logo.png'),
-          fit: BoxFit.scaleDown,
-        ),
-      ),
     );
   }
 }

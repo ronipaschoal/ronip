@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:ronip/helpers/hyperlink_helper.dart';
 import 'package:ronip/helpers/media_query_helper.dart';
 import 'package:ronip/pages/home/home_drawer.dart';
 import 'package:ronip/pages/home/home_menu.dart';
@@ -10,9 +11,9 @@ import 'package:ronip/pages/home/sections/contact_section.dart';
 import 'package:ronip/pages/home/sections/home_section.dart';
 import 'package:ronip/pages/home/sections/work_section.dart';
 import 'package:ronip/ui/theme.dart';
+import 'package:ronip/ui/widgets/asset_image.dart';
 import 'package:ronip/ui/widgets/flutter_banner.dart';
 import 'package:ronip/ui/widgets/logo.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -53,7 +54,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
       ),
       HomeMenu(
         key: _workKey,
-        title: AppLocalizations.of(context)!.portfolio,
+        title: AppLocalizations.of(context)!.work,
         position: _workPosition,
         selectSection: _selectSection,
       ),
@@ -86,8 +87,9 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
   List<Widget> _getExternalMenuList() {
     return [
       IconButton(
-        onPressed: () =>
-            _selectLink('https://www.linkedin.com/in/roni-paschoal/'),
+        onPressed: () => HyperlinkHelper.targetBlank(
+          'https://www.linkedin.com/in/roni-paschoal/',
+        ),
         icon: SvgPicture.asset(
           'assets/images/logos/linkedin.svg',
           width: 16,
@@ -99,13 +101,6 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
         ),
       ),
     ];
-  }
-
-  void _selectLink(String link) async {
-    final url = Uri.parse(link);
-    if (!await launchUrl(url)) {
-      throw Exception('Could not launch $url');
-    }
   }
 
   @override
@@ -149,15 +144,8 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                 ? Builder(
                     builder: (BuildContext context) {
                       return IconButton(
-                        icon: Container(
-                          width: 48.0,
-                          decoration: const BoxDecoration(
-                            image: DecorationImage(
-                              image: AssetImage(
-                                  'assets/images/logos/logo-menu.png'),
-                              fit: BoxFit.scaleDown,
-                            ),
-                          ),
+                        icon: const RpAssetImage(
+                          asset: 'assets/images/logos/logo-menu.png',
                         ),
                         onPressed: () => _drawerKey.currentState?.openDrawer(),
                         tooltip: MaterialLocalizations.of(context)
