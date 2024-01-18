@@ -12,27 +12,28 @@ class HomeDrawer extends StatelessWidget {
     required this.externalMenuList,
   });
 
-  List<Widget> _buildMenuList() {
-    return menuList
-        .map(
-          (menu) => TextButton(
-            child: Text(
-              menu.title,
-              style: const TextStyle(color: RpTheme.witheColor),
-            ),
-            onPressed: () => menu.goToSection(),
-          ),
-        )
-        .toList();
-  }
-
   @override
   Widget build(BuildContext context) {
     return Drawer(
-      backgroundColor: RpTheme.backgroundColor,
+      backgroundColor: RpTheme.backgroundColor.withOpacity(0.9),
       child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          ..._buildMenuList(),
+          ListView.separated(
+            shrinkWrap: true,
+            itemCount: menuList.length,
+            itemBuilder: (ctx, index) {
+              final menu = menuList[index];
+              return TextButton(
+                child: Text(
+                  menu.title,
+                  style: const TextStyle(color: RpTheme.witheColor),
+                ),
+                onPressed: () => menu.goToSection(),
+              );
+            },
+            separatorBuilder: (_, __) => const SizedBox(height: 8.0),
+          ),
           ...externalMenuList,
         ],
       ),

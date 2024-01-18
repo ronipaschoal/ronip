@@ -12,27 +12,30 @@ class HomeWebMenu extends StatelessWidget {
     required this.externalMenuList,
   });
 
-  List<Widget> _buildMenuList() {
-    return menuList
-        .map(
-          (menu) => TextButton(
-            child: Text(
-              menu.title,
-              style: const TextStyle(color: RpTheme.witheColor),
-            ),
-            onPressed: () => menu.goToSection(),
-          ),
-        )
-        .toList();
-  }
-
   @override
   Widget build(BuildContext context) {
     return Drawer(
-      backgroundColor: RpTheme.backgroundColor,
+      backgroundColor: Colors.transparent,
       child: Row(
         children: [
-          ..._buildMenuList(),
+          Expanded(
+            child: ListView.separated(
+              scrollDirection: Axis.horizontal,
+              shrinkWrap: true,
+              itemCount: menuList.length,
+              itemBuilder: (ctx, index) {
+                final menu = menuList[index];
+                return TextButton(
+                  child: Text(
+                    menu.title,
+                    style: const TextStyle(color: RpTheme.witheColor),
+                  ),
+                  onPressed: () => menu.goToSection(),
+                );
+              },
+              separatorBuilder: (_, __) => const SizedBox(width: 8.0),
+            ),
+          ),
           ...externalMenuList,
         ],
       ),
