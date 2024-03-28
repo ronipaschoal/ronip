@@ -19,7 +19,7 @@ class WorkSection extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             SelectableText(
-              AppLocalizations.of(context)!.work,
+              AppLocalizations.of(context)!.myWorks,
               semanticsLabel: AppLocalizations.of(context)!.work,
               style: const TextStyle(
                 color: RpTheme.witheColor,
