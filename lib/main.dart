@@ -28,9 +28,6 @@ class MyApp extends StatelessWidget {
           Locale('pt', 'BR'),
           Locale('en', 'US'),
         ],
-        theme: ThemeData(
-          colorScheme: ColorScheme.fromSeed(seedColor: RpTheme.brandColor),
-          useMaterial3: true,
-        ),
+        theme: RpTheme.theme,
       );
 }

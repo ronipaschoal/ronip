@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ronip/ui/theme.dart';
 import 'package:ronip/ui/widgets/asset_image.dart';
 
 class RpLogo extends StatelessWidget {
@@ -14,6 +15,8 @@ class RpLogo extends StatelessWidget {
       asset: 'assets/images/logos/logo.png',
       width: size.width,
       height: size.height,
+      color: RpTheme.brandColor,
+      colorBlendMode: BlendMode.modulate,
     );
   }
 }

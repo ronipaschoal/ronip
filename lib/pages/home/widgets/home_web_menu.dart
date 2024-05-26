@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:ronip/pages/home/home_menu.dart';
+import 'package:ronip/pages/home/widgets/home_menu.dart';
 import 'package:ronip/ui/theme.dart';
 
 class HomeWebMenu extends StatelessWidget {
@@ -28,12 +28,12 @@ class HomeWebMenu extends StatelessWidget {
                 return TextButton(
                   child: Text(
                     menu.title,
-                    style: const TextStyle(color: RpTheme.witheColor),
+                    style: const TextStyle(color: RpTheme.textColor),
                   ),
                   onPressed: () => menu.goToSection(),
                 );
               },
-              separatorBuilder: (_, __) => const SizedBox(width: 8.0),
+              separatorBuilder: (_, __) => RpTheme.spacerXS,
             ),
           ),
           ...externalMenuList,

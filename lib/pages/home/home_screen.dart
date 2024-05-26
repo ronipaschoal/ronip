@@ -3,9 +3,9 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:ronip/helpers/hyperlink_helper.dart';
 import 'package:ronip/helpers/media_query_helper.dart';
-import 'package:ronip/pages/home/home_drawer.dart';
-import 'package:ronip/pages/home/home_menu.dart';
-import 'package:ronip/pages/home/home_web_menu.dart';
+import 'package:ronip/pages/home/widgets/home_drawer.dart';
+import 'package:ronip/pages/home/widgets/home_menu.dart';
+import 'package:ronip/pages/home/widgets/home_web_menu.dart';
 import 'package:ronip/pages/home/sections/about_section.dart';
 import 'package:ronip/pages/home/sections/contact_section.dart';
 import 'package:ronip/pages/home/sections/home_section.dart';
@@ -146,6 +146,8 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                       return IconButton(
                         icon: const RpAssetImage(
                           asset: 'assets/images/logos/logo-menu.png',
+                          color: RpTheme.brandColor,
+                          colorBlendMode: BlendMode.modulate,
                         ),
                         onPressed: () => _drawerKey.currentState?.openDrawer(),
                         tooltip: MaterialLocalizations.of(context)

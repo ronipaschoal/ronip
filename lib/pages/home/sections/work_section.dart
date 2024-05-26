@@ -12,63 +12,51 @@ class WorkSection extends StatelessWidget {
     return SizedBox(
       height: MediaQuery.sizeOf(context).height,
       width: MediaQuery.sizeOf(context).width,
-      child: Container(
-        color: RpTheme.backgroundColor,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            SelectableText(
-              AppLocalizations.of(context)!.myWorks,
-              semanticsLabel: AppLocalizations.of(context)!.work,
-              style: const TextStyle(
-                color: RpTheme.witheColor,
-                fontSize: 42.0,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          SelectableText(
+            AppLocalizations.of(context)!.myWorks,
+            semanticsLabel: AppLocalizations.of(context)!.work,
+            style: const TextStyle(fontSize: RpTheme.fontSizeLarge),
+          ),
+          RpTheme.spacerLarge,
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              IconButton(
+                onPressed: () => HyperlinkHelper.targetBlank(
+                  'https://ronipaschoal.com.br/eremita/',
+                ),
+                icon: const Column(
+                  children: [
+                    RpAssetImage(
+                      asset: 'assets/images/logos/eremita.png',
+                      width: 128.0,
+                    ),
+                    Text('Eremita do Iceberg'),
+                  ],
+                ),
               ),
-            ),
-            const SizedBox(height: 32.0),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                IconButton(
-                  onPressed: () => HyperlinkHelper.targetBlank(
-                    'https://ronipaschoal.com.br/eremita/',
-                  ),
-                  icon: const Column(
-                    children: [
-                      RpAssetImage(
-                        asset: 'assets/images/logos/eremita.png',
-                        width: 128.0,
-                      ),
-                      Text(
-                        'Eremita do Iceberg',
-                        style: TextStyle(color: RpTheme.witheColor),
-                      ),
-                    ],
-                  ),
+              RpTheme.spacerLarge,
+              IconButton(
+                onPressed: () => HyperlinkHelper.targetBlank(
+                  'https://www.realiplasticos.com.br/',
                 ),
-                const SizedBox(width: 32.0),
-                IconButton(
-                  onPressed: () => HyperlinkHelper.targetBlank(
-                    'https://www.realiplasticos.com.br/',
-                  ),
-                  icon: const Column(
-                    children: [
-                      RpAssetImage(
-                        asset: 'assets/images/logos/reali-plasticos.png',
-                        width: 128.0,
-                      ),
-                      Text(
-                        'Reali Plásticos',
-                        style: TextStyle(color: RpTheme.witheColor),
-                      ),
-                    ],
-                  ),
+                icon: const Column(
+                  children: [
+                    RpAssetImage(
+                      asset: 'assets/images/logos/reali-plasticos.png',
+                      width: 128.0,
+                    ),
+                    Text('Reali Plásticos'),
+                  ],
                 ),
-              ],
-            ),
-          ],
-        ),
+              ),
+            ],
+          ),
+        ],
       ),
     );
   }

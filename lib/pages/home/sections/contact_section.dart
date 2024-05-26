@@ -10,30 +10,21 @@ class ContactSection extends StatelessWidget {
     return SizedBox(
       height: MediaQuery.sizeOf(context).height,
       width: MediaQuery.sizeOf(context).width,
-      child: Container(
-        color: RpTheme.backgroundColor,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            SelectableText(
-              AppLocalizations.of(context)!.getInTouch,
-              semanticsLabel: AppLocalizations.of(context)!.getInTouch,
-              style: TextStyle(
-                color: RpTheme.witheColor,
-                fontSize: 42.0,
-              ),
-            ),
-            const SelectableText(
-              'contato@ronip.dev',
-              semanticsLabel: 'contato@ronip.dev',
-              style: TextStyle(
-                color: RpTheme.witheColor,
-                fontSize: 16.0,
-              ),
-            ),
-          ],
-        ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          SelectableText(
+            AppLocalizations.of(context)!.getInTouch,
+            semanticsLabel: AppLocalizations.of(context)!.getInTouch,
+            style: const TextStyle(fontSize: RpTheme.fontSizeLarge),
+          ),
+          RpTheme.spacerLarge,
+          const SelectableText(
+            'contato@ronip.dev',
+            semanticsLabel: 'contato@ronip.dev',
+          ),
+        ],
       ),
     );
   }
