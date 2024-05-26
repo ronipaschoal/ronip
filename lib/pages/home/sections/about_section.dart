@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:ronip/helpers/media_query_helper.dart';
 import 'package:ronip/ui/theme.dart';
 
 class AboutSection extends StatelessWidget {
@@ -8,9 +9,13 @@ class AboutSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      constraints: const BoxConstraints(maxWidth: 800.0),
-      height: MediaQuery.sizeOf(context).height,
-      width: MediaQuery.sizeOf(context).width * 0.8,
+      constraints: BoxConstraints(
+        minHeight: MediaQuery.sizeOf(context).height,
+        maxWidth: 800.0,
+      ),
+      width: MediaQueryHelper(context).isSmallScreen()
+          ? null
+          : MediaQuery.sizeOf(context).width * 0.8,
       padding: const EdgeInsets.all(32.0),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,

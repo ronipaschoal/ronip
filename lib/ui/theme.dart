@@ -19,10 +19,14 @@ sealed class RpTheme {
   static const double spacingMedium = 16.0;
   static const double spacingLarge = 32.0;
 
-  static const SizedBox spacerXS = SizedBox(height: spacingXS);
-  static const SizedBox spacerSmall = SizedBox(height: spacingSmall);
-  static const SizedBox spacerMedium = SizedBox(height: spacingMedium);
-  static const SizedBox spacerLarge = SizedBox(height: spacingLarge);
+  static const SizedBox spacerXS =
+      SizedBox(height: spacingXS, width: spacingXS);
+  static const SizedBox spacerSmall =
+      SizedBox(height: spacingSmall, width: spacingSmall);
+  static const SizedBox spacerMedium =
+      SizedBox(height: spacingMedium, width: spacingMedium);
+  static const SizedBox spacerLarge =
+      SizedBox(height: spacingLarge, width: spacingLarge);
 
   static final theme = ThemeData(
     colorScheme: ColorScheme.fromSeed(seedColor: RpTheme.brandColor),

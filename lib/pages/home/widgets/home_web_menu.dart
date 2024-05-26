@@ -14,31 +14,28 @@ class HomeWebMenu extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Drawer(
-      backgroundColor: Colors.transparent,
-      child: Row(
-        children: [
-          Expanded(
-            child: ListView.separated(
-              scrollDirection: Axis.horizontal,
-              shrinkWrap: true,
-              itemCount: menuList.length,
-              itemBuilder: (ctx, index) {
-                final menu = menuList[index];
-                return TextButton(
-                  child: Text(
-                    menu.title,
-                    style: const TextStyle(color: RpTheme.textColor),
-                  ),
-                  onPressed: () => menu.goToSection(),
-                );
-              },
-              separatorBuilder: (_, __) => RpTheme.spacerXS,
-            ),
-          ),
-          ...externalMenuList,
-        ],
-      ),
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.end,
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        ListView.separated(
+          scrollDirection: Axis.horizontal,
+          shrinkWrap: true,
+          itemCount: menuList.length,
+          itemBuilder: (ctx, index) {
+            final menu = menuList[index];
+            return TextButton(
+              child: Text(
+                menu.title,
+                style: const TextStyle(color: RpTheme.textColor),
+              ),
+              onPressed: () => menu.goToSection(),
+            );
+          },
+          separatorBuilder: (_, __) => RpTheme.spacerXS,
+        ),
+        ...externalMenuList,
+      ],
     );
   }
 }
