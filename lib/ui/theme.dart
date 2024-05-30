@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/painting.dart';
 
 sealed class RpTheme {
   static const Color witheColor = Color(0xFFFEFEFE);

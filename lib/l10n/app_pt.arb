@@ -1,7 +1,7 @@
 {
     "home": "Home",
     "about": "Sobre",
-    "work": "Trabalhos",
+    "programs": "Programas",
     "contact": "Contato",
     "wellcome": "Olá, eu sou",
     "flutterSpecialist": "Especialista Flutter",
@@ -9,6 +9,6 @@
     "hybridTechnologyEnthusiast": "Olá! Sou um entusiasta de longa data da tecnologia híbrida para dispositivos móveis, trabalhando na área de desenvolvimento de software desde 2013. Comecei minha jornada utilizando AngularJs e jQuery para criar aplicativos com o PhoneGap, e desde então tenho explorado diferentes ferramentas como Angular, React e, mais recentemente, Dart e Flutter." ,
     "totvsMobileApps": "Depois de alguns anos focado principalmente no desenvolvimento front-end, voltei para o mundo dos aplicativos móveis no final de 2022 e me apaixonei completamente por Dart e Flutter. Atualmente, faço parte da primeira equipe focada no mobile da TOTVs - CMNet, onde tenho a oportunidade de desenvolver bibliotecas e aplicativos para Android e iOS.",
     "letSConnect": "Adoro enfrentar desafios e me adaptar rapidamente a novas tecnologias. Sempre em busca de inovação, gosto de colaborar em projetos que tenham um impacto real e positivo. Se você está interessado em tecnologia móvel ou só quer trocar ideias sobre o assunto, estou sempre aberto para uma conversa! Vamos nos conectar?",
-    "myWorks": "Meus trabalhos",
+    "myPrograms": "Alguns dos meus programas",
     "getInTouch": "Entre em contato"
 }

@@ -18,9 +18,10 @@ class WorkSection extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           SelectableText(
-            AppLocalizations.of(context)!.myWorks,
-            semanticsLabel: AppLocalizations.of(context)!.work,
+            AppLocalizations.of(context)!.myPrograms,
+            semanticsLabel: AppLocalizations.of(context)!.programs,
             style: const TextStyle(fontSize: RpTheme.fontSizeLarge),
+            textAlign: TextAlign.center,
           ),
           RpTheme.spacerLarge,
           MediaQueryHelper(context).isSmallScreen()

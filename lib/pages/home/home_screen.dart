@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:ronip/helpers/hyperlink_helper.dart';
@@ -54,7 +55,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
       ),
       HomeMenu(
         key: _workKey,
-        title: AppLocalizations.of(context)!.work,
+        title: AppLocalizations.of(context)!.programs,
         position: _workPosition,
         selectSection: _selectSection,
       ),
@@ -118,6 +119,8 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
+
     return SizedBox(
       height: double.infinity,
       width: double.infinity,
@@ -146,7 +149,6 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                       return IconButton(
                         icon: const RpAssetImage(
                           asset: 'assets/images/logos/logo-menu.png',
-                          color: RpTheme.brandColor,
                           colorBlendMode: BlendMode.modulate,
                         ),
                         onPressed: () => _drawerKey.currentState?.openDrawer(),
