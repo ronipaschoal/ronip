@@ -30,12 +30,26 @@ class WorkSection extends StatelessWidget {
                   children: [
                     IconButton(
                       onPressed: () => HyperlinkHelper //
+                          .targetBlank('https://ronipaschoal.com.br/angular/'),
+                      icon: const Column(
+                        children: [
+                          RpAssetImage(
+                            asset: 'assets/images/logos/logo.png',
+                            width: 96.0,
+                          ),
+                          Text('Versão em Angular'),
+                        ],
+                      ),
+                    ),
+                    RpTheme.spacerLarge,
+                    IconButton(
+                      onPressed: () => HyperlinkHelper //
                           .targetBlank('https://ronipaschoal.com.br/eremita/'),
                       icon: const Column(
                         children: [
                           RpAssetImage(
                             asset: 'assets/images/logos/eremita.png',
-                            width: 128.0,
+                            width: 96.0,
                           ),
                           Text('Eremita do Iceberg'),
                         ],
@@ -49,7 +63,7 @@ class WorkSection extends StatelessWidget {
                         children: [
                           RpAssetImage(
                             asset: 'assets/images/logos/reali-plasticos.png',
-                            width: 128.0,
+                            width: 96.0,
                           ),
                           Text('Reali Plásticos'),
                         ],
@@ -60,6 +74,20 @@ class WorkSection extends StatelessWidget {
               : Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
+                    IconButton(
+                      onPressed: () => HyperlinkHelper //
+                          .targetBlank('https://ronipaschoal.com.br/angular/'),
+                      icon: const Column(
+                        children: [
+                          RpAssetImage(
+                            asset: 'assets/images/logos/logo.png',
+                            width: 128.0,
+                          ),
+                          Text('Versão em Angular'),
+                        ],
+                      ),
+                    ),
+                    RpTheme.spacerLarge,
                     IconButton(
                       onPressed: () => HyperlinkHelper //
                           .targetBlank('https://ronipaschoal.com.br/eremita/'),
