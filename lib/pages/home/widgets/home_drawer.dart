@@ -34,7 +34,19 @@ class HomeDrawer extends StatelessWidget {
             },
             separatorBuilder: (_, __) => RpTheme.spacerXS,
           ),
-          ...externalMenuList,
+          RpTheme.spacerMedium,
+          Container(
+            height: 1.0,
+            width: 120.0,
+            color: RpTheme.brandColor,
+          ),
+          RpTheme.spacerMedium,
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              ...externalMenuList,
+            ],
+          ),
         ],
       ),
     );

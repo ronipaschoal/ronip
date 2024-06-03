@@ -34,6 +34,13 @@ class HomeWebMenu extends StatelessWidget {
           },
           separatorBuilder: (_, __) => RpTheme.spacerXS,
         ),
+        RpTheme.spacerMedium,
+        Container(
+          height: 24.0,
+          width: 1.0,
+          color: RpTheme.brandColor,
+        ),
+        RpTheme.spacerMedium,
         ...externalMenuList,
       ],
     );

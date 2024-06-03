@@ -101,6 +101,20 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
           ),
         ),
       ),
+      IconButton(
+        onPressed: () => HyperlinkHelper.targetBlank(
+          'https://github.com/ronipaschoal/',
+        ),
+        icon: SvgPicture.asset(
+          'assets/images/logos/github.svg',
+          width: 16,
+          height: 16,
+          colorFilter: const ColorFilter.mode(
+            RpTheme.witheColor,
+            BlendMode.srcIn,
+          ),
+        ),
+      ),
     ];
   }
 
