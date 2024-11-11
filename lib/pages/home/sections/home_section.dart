@@ -8,14 +8,25 @@ class HomeSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: MediaQuery.sizeOf(context).height,
-      width: MediaQuery.sizeOf(context).width,
+    return Container(
+      constraints: BoxConstraints(
+        minHeight: MediaQuery.sizeOf(context).height,
+      ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          const RpLogo(),
+          const Stack(
+            children: [
+              Padding(
+                padding: EdgeInsets.all(2.0),
+                child: RpLogo(
+                  color: RpTheme.brandColor,
+                ),
+              ),
+              RpLogo(),
+            ],
+          ),
           RpTheme.spacerLarge,
           SelectableText(
             AppLocalizations.of(context)!.wellcome,

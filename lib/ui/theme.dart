@@ -2,11 +2,12 @@ import 'package:flutter/material.dart';
 
 sealed class RpTheme {
   static const Color witheColor = Color(0xFFFEFEFE);
+  static const Color transparentColor = Color(0x00FEFEFE);
 
   static const Color textColor = Color(0xFFF3F4FF);
-  static const Color brandColor = Color(0xFF61F7FF);
+  static const Color brandColor = Color(0xFFC92F10);
   static const Color bannerColor = Color(0xFF1A73E8);
-  static const Color backgroundColor = Color(0xFF0A192F);
+  static const Color backgroundColor = Color(0xFF0B0B18);
   static const Color backgroundColorDark = Color(0xFF040C19);
 
   static const double fontSizeLarge = 44.0;

@@ -8,9 +8,10 @@ class ContactSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: MediaQuery.sizeOf(context).height,
-      width: MediaQuery.sizeOf(context).width,
+    return Container(
+      constraints: BoxConstraints(
+        minHeight: MediaQuery.sizeOf(context).height,
+      ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.center,
@@ -19,6 +20,13 @@ class ContactSection extends StatelessWidget {
             AppLocalizations.of(context)!.getInTouch,
             semanticsLabel: AppLocalizations.of(context)!.getInTouch,
             style: const TextStyle(fontSize: RpTheme.fontSizeLarge),
+          ),
+          Center(
+            child: Container(
+              height: 2.0,
+              width: 64.0,
+              color: RpTheme.brandColor,
+            ),
           ),
           RpTheme.spacerLarge,
           TextButton(

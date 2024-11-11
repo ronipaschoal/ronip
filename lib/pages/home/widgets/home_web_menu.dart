@@ -1,15 +1,19 @@
 import 'package:flutter/material.dart';
-import 'package:ronip/pages/home/widgets/home_menu.dart';
+import 'package:ronip/model/home_menu.dart';
 import 'package:ronip/ui/theme.dart';
 
 class HomeWebMenu extends StatelessWidget {
-  final List<HomeMenu> menuList;
+  final GlobalKey<ScaffoldState> drawerKey;
+  final ScrollController scrollController;
   final List<Widget> externalMenuList;
+  final List<HomeMenu> menuList;
 
   const HomeWebMenu({
     super.key,
-    required this.menuList,
+    required this.drawerKey,
+    required this.scrollController,
     required this.externalMenuList,
+    required this.menuList,
   });
 
   @override
@@ -24,12 +28,30 @@ class HomeWebMenu extends StatelessWidget {
           itemCount: menuList.length,
           itemBuilder: (ctx, index) {
             final menu = menuList[index];
-            return TextButton(
-              child: Text(
-                menu.title,
-                style: const TextStyle(color: RpTheme.textColor),
-              ),
-              onPressed: () => menu.goToSection(),
+            return Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                TextButton(
+                  child: Text(
+                    menu.translate(context),
+                    style: const TextStyle(
+                      color: RpTheme.textColor,
+                    ),
+                  ),
+                  onPressed: () => menu.selectSection(
+                    drawerKey: drawerKey,
+                    scrollController: scrollController,
+                  ),
+                ),
+                menu.isActive
+                    ? Container(
+                        height: 2.0,
+                        width: 16.0,
+                        color: RpTheme.brandColor,
+                      )
+                    : const SizedBox.shrink(),
+              ],
             );
           },
           separatorBuilder: (_, __) => RpTheme.spacerXS,

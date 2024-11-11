@@ -11,7 +11,6 @@ class AboutSection extends StatelessWidget {
     return Container(
       constraints: BoxConstraints(
         minHeight: MediaQuery.sizeOf(context).height,
-        maxWidth: 800.0,
       ),
       width: MediaQueryHelper(context).isSmallScreen()
           ? null
@@ -26,6 +25,13 @@ class AboutSection extends StatelessWidget {
             semanticsLabel: AppLocalizations.of(context)!.aboutMe,
             style: const TextStyle(fontSize: RpTheme.fontSizeLarge),
             textAlign: TextAlign.center,
+          ),
+          Center(
+            child: Container(
+              height: 2.0,
+              width: 64.0,
+              color: RpTheme.brandColor,
+            ),
           ),
           RpTheme.spacerLarge,
           SelectableText(

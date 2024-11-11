@@ -6,7 +6,6 @@ class RpAssetImage extends StatelessWidget {
   final double? width;
   final double? height;
   final Color? color;
-  final BlendMode? colorBlendMode;
 
   const RpAssetImage({
     super.key,
@@ -14,7 +13,6 @@ class RpAssetImage extends StatelessWidget {
     this.width,
     this.height,
     this.color,
-    this.colorBlendMode,
   });
 
   @override
@@ -24,6 +22,7 @@ class RpAssetImage extends StatelessWidget {
         asset,
         width: width,
         height: height,
+        color: color,
       );
     }
 
@@ -32,7 +31,6 @@ class RpAssetImage extends StatelessWidget {
       width: width,
       height: height,
       color: color,
-      colorBlendMode: colorBlendMode,
     );
   }
 }

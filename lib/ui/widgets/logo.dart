@@ -3,9 +3,12 @@ import 'package:ronip/ui/widgets/asset_image.dart';
 
 class RpLogo extends StatelessWidget {
   final Size size;
+  final Color? color;
+
   const RpLogo({
     super.key,
     this.size = const Size(80, 80),
+    this.color,
   });
 
   @override
@@ -14,7 +17,7 @@ class RpLogo extends StatelessWidget {
       asset: 'assets/images/logos/logo.png',
       width: size.width,
       height: size.height,
-      colorBlendMode: BlendMode.modulate,
+      color: color,
     );
   }
 }

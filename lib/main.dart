@@ -11,23 +11,23 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  static const String _title = 'Roni Paschoal';
-
   @override
-  Widget build(BuildContext context) => MaterialApp.router(
-        title: _title,
-        debugShowCheckedModeBanner: false,
-        routerConfig: RpRoutes.router,
-        localizationsDelegates: const [
-          AppLocalizations.delegate,
-          GlobalMaterialLocalizations.delegate,
-          GlobalWidgetsLocalizations.delegate,
-          GlobalCupertinoLocalizations.delegate,
-        ],
-        supportedLocales: const [
-          Locale('pt', 'BR'),
-          Locale('en', 'US'),
-        ],
-        theme: RpTheme.theme,
-      );
+  Widget build(BuildContext context) {
+    return MaterialApp.router(
+      title: 'Roni Paschoal',
+      debugShowCheckedModeBanner: false,
+      routerConfig: RpRoutes.router,
+      localizationsDelegates: const [
+        AppLocalizations.delegate,
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+      ],
+      supportedLocales: const [
+        Locale('pt', 'BR'),
+        Locale('en', 'US'),
+      ],
+      theme: RpTheme.theme,
+    );
+  }
 }
