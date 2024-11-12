@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:ronip/ui/theme.dart';
 
-class RpFlutterBanner extends StatelessWidget {
+class FlutterBannerWidget extends StatelessWidget {
   final Widget child;
 
-  const RpFlutterBanner({
+  const FlutterBannerWidget({
     super.key,
     required this.child,
   });

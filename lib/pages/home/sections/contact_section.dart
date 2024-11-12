@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:ronip/helpers/hyperlink_helper.dart';
+import 'package:ronip/pages/home/widgets/section_title_widget.dart';
+import 'package:ronip/pages/home/widgets/section_widget.dart';
 import 'package:ronip/ui/theme.dart';
 
 class ContactSection extends StatelessWidget {
@@ -8,27 +10,10 @@ class ContactSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      constraints: BoxConstraints(
-        minHeight: MediaQuery.sizeOf(context).height,
-      ),
+    return SectionWidget(
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          SelectableText(
-            AppLocalizations.of(context)!.getInTouch,
-            semanticsLabel: AppLocalizations.of(context)!.getInTouch,
-            style: const TextStyle(fontSize: RpTheme.fontSizeLarge),
-          ),
-          Center(
-            child: Container(
-              height: 2.0,
-              width: 64.0,
-              color: RpTheme.brandColor,
-            ),
-          ),
-          RpTheme.spacerLarge,
+          SectionTitleWidget(title: AppLocalizations.of(context)!.getInTouch),
           TextButton(
             child: const Text(
               'contato@ronip.dev',

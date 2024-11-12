@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:ronip/helpers/hyperlink_helper.dart';
+import 'package:ronip/ui/theme.dart';
 
 enum HomeSectionEnum {
   home,
@@ -26,37 +29,62 @@ extension DiscountPageTypeExtensions on HomeMenu {
 class HomeMenu {
   final GlobalKey key;
   final HomeSectionEnum title;
-  final List<HomeMenu> previousMenuList;
   bool isActive;
+  final GlobalKey<ScaffoldState> drawerKey;
+  final ScrollController scrollController;
+  final List<HomeMenu> previousMenuList;
 
   HomeMenu({
     required this.key,
     required this.title,
-    this.previousMenuList = const [],
     this.isActive = false,
+    required this.drawerKey,
+    required this.scrollController,
+    this.previousMenuList = const [],
   });
 
-  double get size => key.currentContext?.size?.height ?? 0.0;
+  double get sectionSize => key.currentContext?.size?.height ?? 0.0;
 
-  double get position => previousMenuList.fold(
+  double get sectionPosition => previousMenuList.fold(
         0.0,
-        (previous, element) => previous + element.size,
+        (previous, element) => previous + element.sectionSize,
       );
 
   void activeMenu(double controllerHeight) {
-    isActive =
-        controllerHeight >= position && controllerHeight < position + size;
+    isActive = controllerHeight >= sectionPosition &&
+        controllerHeight < sectionPosition + sectionSize;
   }
 
-  void selectSection({
-    required GlobalKey<ScaffoldState> drawerKey,
-    required ScrollController scrollController,
-  }) {
+  void goToSection() {
     drawerKey.currentState?.closeDrawer();
     scrollController.animateTo(
-      position,
+      sectionPosition,
       duration: const Duration(milliseconds: 500),
       curve: Curves.easeInOut,
     );
   }
+}
+
+class ExternalMenu {
+  final String icon;
+  final String url;
+
+  ExternalMenu({
+    required this.icon,
+    required this.url,
+  });
+
+  void goToExternal() {
+    HyperlinkHelper.targetBlank(url);
+  }
+
+  Widget get iconWidget => SvgPicture.asset(
+        icon,
+        width: 16,
+        height: 16,
+        colorFilter: const ColorFilter.mode(
+          RpTheme.textColor,
+          BlendMode.srcIn,
+        ),
+      );
 }

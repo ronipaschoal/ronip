@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/foundation.dart';
 
-class RpAssetImage extends StatelessWidget {
+class RpImageWidget extends StatelessWidget {
   final String asset;
   final double? width;
   final double? height;
   final Color? color;
 
-  const RpAssetImage({
+  const RpImageWidget({
     super.key,
     required this.asset,
     this.width,

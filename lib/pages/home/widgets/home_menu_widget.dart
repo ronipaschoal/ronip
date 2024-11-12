@@ -1,0 +1,63 @@
+import 'package:flutter/material.dart';
+import 'package:ronip/model/home_menu.dart';
+import 'package:ronip/pages/home/widgets/menu_button_widget.dart';
+import 'package:ronip/ui/theme.dart';
+
+class HomeMenuWidget extends StatelessWidget {
+  final GlobalKey<ScaffoldState> drawerKey;
+  final ScrollController scrollController;
+  final List<HomeMenu> menuList;
+  final List<ExternalMenu> externalMenuList;
+
+  const HomeMenuWidget({
+    super.key,
+    required this.drawerKey,
+    required this.scrollController,
+    required this.menuList,
+    required this.externalMenuList,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.end,
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        ListView.separated(
+          scrollDirection: Axis.horizontal,
+          shrinkWrap: true,
+          itemCount: menuList.length,
+          itemBuilder: (_, index) {
+            final menu = menuList[index];
+            return MenuButtonWidget(
+              label: menu.translate(context),
+              isActive: menu.isActive,
+              onPressed: menu.goToSection,
+            );
+          },
+          separatorBuilder: (_, __) => RpTheme.spacerSmallX,
+        ),
+        RpTheme.spacerMedium,
+        Container(
+          height: 24.0,
+          width: 1.0,
+          color: RpTheme.brandColor,
+        ),
+        RpTheme.spacerMedium,
+        ListView.separated(
+          scrollDirection: Axis.horizontal,
+          shrinkWrap: true,
+          itemCount: externalMenuList.length,
+          itemBuilder: (_, index) {
+            final externalMenu = externalMenuList[index];
+            return IconButton(
+              onPressed: externalMenu.goToExternal,
+              icon: externalMenu.iconWidget,
+            );
+          },
+          separatorBuilder: (_, __) => RpTheme.spacerSmallX,
+        ),
+      ],
+    );
+  }
+}
