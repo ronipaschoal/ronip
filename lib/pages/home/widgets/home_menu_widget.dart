@@ -8,6 +8,7 @@ class HomeMenuWidget extends StatelessWidget {
   final ScrollController scrollController;
   final List<HomeMenu> menuList;
   final List<ExternalMenu> externalMenuList;
+  final List<Widget> actionList;
 
   const HomeMenuWidget({
     super.key,
@@ -15,6 +16,7 @@ class HomeMenuWidget extends StatelessWidget {
     required this.scrollController,
     required this.menuList,
     required this.externalMenuList,
+    required this.actionList,
   });
 
   @override
@@ -57,6 +59,13 @@ class HomeMenuWidget extends StatelessWidget {
           },
           separatorBuilder: (_, __) => RpTheme.spacerSmallX,
         ),
+        RpTheme.spacerMedium,
+        Container(
+          height: 24.0,
+          width: 1.0,
+          color: RpTheme.brandColor,
+        ),
+        ...actionList,
       ],
     );
   }

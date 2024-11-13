@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ronip/cubits/app/app_cubit.dart';
 import 'package:ronip/helpers/media_query_helper.dart';
 import 'package:ronip/model/home_menu.dart';
 import 'package:ronip/pages/home/sections/home_section.dart';
@@ -9,10 +10,16 @@ import 'package:ronip/pages/home/sections/contact_section.dart';
 import 'package:ronip/pages/home/sections/work_section.dart';
 import 'package:ronip/ui/theme.dart';
 import 'package:ronip/ui/widgets/flutter_banner_widget.dart';
+import 'package:ronip/ui/widgets/locale_button_widget.dart';
 import 'package:ronip/ui/widgets/logo_widget.dart';
 
 class HomeScreen extends StatefulWidget {
-  const HomeScreen({super.key});
+  final AppCubit appCubit;
+
+  const HomeScreen({
+    super.key,
+    required this.appCubit,
+  });
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();
@@ -72,6 +79,12 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
     ),
   ];
 
+  late final _actionList = <Widget>[
+    LocaleButtonWidget(
+      changeLocale: widget.appCubit.changeLocale,
+    ),
+  ];
+
   @override
   void initState() {
     super.initState();
@@ -99,6 +112,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                 scrollController: _scrollController,
                 menuList: _menuList,
                 externalMenuList: _externalMenuList,
+                actionList: _actionList,
               )
             : null,
         appBar: MediaQueryHelper(context).isSmallScreen()
@@ -120,6 +134,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                     scrollController: _scrollController,
                     menuList: _menuList,
                     externalMenuList: _externalMenuList,
+                    actionList: _actionList,
                   ),
                   RpTheme.spacerLarge,
                 ],

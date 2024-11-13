@@ -6,6 +6,7 @@ import 'package:ronip/ui/theme.dart';
 class HomeDrawerWidget extends StatelessWidget {
   final List<HomeMenu> menuList;
   final List<ExternalMenu> externalMenuList;
+  final List<Widget> actionList;
   final GlobalKey<ScaffoldState> drawerKey;
   final ScrollController scrollController;
 
@@ -15,6 +16,7 @@ class HomeDrawerWidget extends StatelessWidget {
     required this.externalMenuList,
     required this.drawerKey,
     required this.scrollController,
+    required this.actionList,
   });
 
   @override
@@ -61,6 +63,14 @@ class HomeDrawerWidget extends StatelessWidget {
               separatorBuilder: (_, __) => RpTheme.spacerSmallX,
             ),
           ),
+          RpTheme.spacerMedium,
+          Container(
+            height: 1.0,
+            width: 120.0,
+            color: RpTheme.brandColor,
+          ),
+          RpTheme.spacerMedium,
+          ...actionList,
         ],
       ),
     );
