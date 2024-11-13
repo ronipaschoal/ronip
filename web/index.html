@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <!--
     If you are serving your web app in a path other than the root, change the
@@ -27,12 +28,77 @@
   <link rel="apple-touch-icon" href="icons/Icon-192.png">
 
   <!-- Favicon -->
-  <link rel="icon" type="image/png" href="favicon.png"/>
+  <link rel="icon" type="image/png" href="favicon.png" />
 
   <title>ronip</title>
   <link rel="manifest" href="manifest.json">
+
+  <style>
+    .logo {
+      position: absolute;
+      opacity: 0.8;
+      height: 30vh;
+    }
+
+    .shadow {
+      -webkit-filter: drop-shadow(3px 3px #c92f10);
+      filter: drop-shadow(3px 3px #c92f10);
+      animation: logoAnimation 2s infinite;
+      opacity: 0.3;
+    }
+
+    @keyframes logoAnimation {
+      50% {
+        opacity: 0.8;
+      }
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #0b0b18;
+    }
+
+    .body {
+      display: flex;
+      width: 99.8vw;
+      height: 99.8vh;
+      justify-content: center;
+      align-items: center;
+      border-radius: 10px;
+      animation: bodyAnimation 2s infinite;
+    }
+
+    @keyframes bodyAnimation {
+      50% {
+        box-shadow: 0 10px 15px #c92f10;
+      }
+    }
+  </style>
 </head>
+
 <body>
+  <div class="body">
+    <img class="logo" src="assets/icon.png" />
+    <img class="logo shadow" src="assets/icon.png" />
+  </div>
+  <script>
+    window.addEventListener('load', function (_) {
+      _flutter.loader.load({
+        serviceWorker: {
+          serviceWorkerVersion: serviceWorkerVersion,
+        },
+        onEntrypointLoaded: function (engineInitializer) {
+          engineInitializer
+            .initializeEngine()
+            .then(function (appRunner) {
+              appRunner.runApp();
+            });
+        },
+      });
+    });
+  </script>
   <script src="flutter_bootstrap.js" async></script>
 </body>
+
 </html>
