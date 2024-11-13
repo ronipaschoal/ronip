@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:ronip/model/home_menu.dart';
+import 'package:ronip/model/home_menu_model.dart';
 import 'package:ronip/pages/home/widgets/menu_button_widget.dart';
 import 'package:ronip/ui/theme.dart';
 

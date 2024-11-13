@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:ronip/cubits/app/app_cubit.dart';
 import 'package:ronip/helpers/media_query_helper.dart';
-import 'package:ronip/model/home_menu.dart';
+import 'package:ronip/model/home_menu_model.dart';
 import 'package:ronip/pages/home/sections/home_section.dart';
 import 'package:ronip/pages/home/widgets/home_drawer_widget.dart';
 import 'package:ronip/pages/home/widgets/home_menu_widget.dart';
