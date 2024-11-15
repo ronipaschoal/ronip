@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ronip/cubits/app/app_cubit.dart';
 import 'package:ronip/helpers/media_query_helper.dart';
 import 'package:ronip/model/home_menu_model.dart';
+import 'package:ronip/pages/home/cubit/home_cubit.dart';
 import 'package:ronip/pages/home/sections/home_section.dart';
 import 'package:ronip/pages/home/widgets/home_drawer_widget.dart';
 import 'package:ronip/pages/home/widgets/home_menu_widget.dart';
@@ -29,17 +31,18 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
   final _drawerKey = GlobalKey<ScaffoldState>();
   final _scrollController = ScrollController();
 
+  late final _homeCubit = context.read<HomeCubit>();
+
   late final _homeMenu = HomeMenu(
     key: GlobalKey(),
-    title: HomeSectionEnum.home,
-    isActive: true,
+    section: HomeSectionEnum.home,
     drawerKey: _drawerKey,
     scrollController: _scrollController,
   );
 
   late final _aboutMenu = HomeMenu(
     key: GlobalKey(),
-    title: HomeSectionEnum.about,
+    section: HomeSectionEnum.about,
     drawerKey: _drawerKey,
     scrollController: _scrollController,
     previousMenuList: [_homeMenu],
@@ -47,7 +50,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
 
   late final _programsMenu = HomeMenu(
     key: GlobalKey(),
-    title: HomeSectionEnum.programs,
+    section: HomeSectionEnum.programs,
     drawerKey: _drawerKey,
     scrollController: _scrollController,
     previousMenuList: [_homeMenu, _aboutMenu],
@@ -55,7 +58,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
 
   late final _contactMenu = HomeMenu(
     key: GlobalKey(),
-    title: HomeSectionEnum.contact,
+    section: HomeSectionEnum.contact,
     drawerKey: _drawerKey,
     scrollController: _scrollController,
     previousMenuList: [_homeMenu, _aboutMenu, _programsMenu],
@@ -102,67 +105,71 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     return FlutterBannerWidget(
-      child: Scaffold(
-        key: _drawerKey,
-        extendBody: true,
-        extendBodyBehindAppBar: true,
-        drawer: MediaQueryHelper(context).isSmallScreen()
-            ? HomeDrawerWidget(
-                drawerKey: _drawerKey,
-                scrollController: _scrollController,
-                menuList: _menuList,
-                externalMenuList: _externalMenuList,
-                actionList: _actionList,
-              )
-            : null,
-        appBar: MediaQueryHelper(context).isSmallScreen()
-            ? AppBar(
-                backgroundColor: RpTheme.menuColor,
-                leading: IconButton(
-                  icon: const RpLogoWidget.menu(),
-                  onPressed: () => _drawerKey.currentState?.openDrawer(),
-                  tooltip:
-                      MaterialLocalizations.of(context).openAppDrawerTooltip,
-                ),
-              )
-            : AppBar(
-                backgroundColor: RpTheme.menuColor,
-                title: const RpLogoWidget(size: Size(36.0, 36.0)),
-                actions: [
-                  HomeMenuWidget(
-                    drawerKey: _drawerKey,
-                    scrollController: _scrollController,
-                    menuList: _menuList,
-                    externalMenuList: _externalMenuList,
-                    actionList: _actionList,
+      child: SizedBox(
+        width: 1200.0,
+        child: Scaffold(
+          key: _drawerKey,
+          extendBody: true,
+          extendBodyBehindAppBar: true,
+          drawer: MediaQueryHelper(context).isSmallScreen()
+              ? HomeDrawerWidget(
+                  drawerKey: _drawerKey,
+                  scrollController: _scrollController,
+                  menuList: _menuList,
+                  externalMenuList: _externalMenuList,
+                  actionList: _actionList,
+                )
+              : null,
+          appBar: MediaQueryHelper(context).isSmallScreen()
+              ? AppBar(
+                  backgroundColor: RpTheme.menuColor,
+                  leading: IconButton(
+                    icon: const RpLogoWidget.menu(),
+                    onPressed: () => _drawerKey.currentState?.openDrawer(),
+                    tooltip:
+                        MaterialLocalizations.of(context).openAppDrawerTooltip,
                   ),
-                  RpTheme.spacerLarge,
-                ],
-              ),
-        body: SingleChildScrollView(
-          controller: _scrollController,
-          child: Column(
-            children: [
-              HomeSection(key: _getKeyByTitle(HomeSectionEnum.home)),
-              AboutSection(key: _getKeyByTitle(HomeSectionEnum.about)),
-              WorkSection(key: _getKeyByTitle(HomeSectionEnum.programs)),
-              ContactSection(key: _getKeyByTitle(HomeSectionEnum.contact)),
-            ],
+                )
+              : AppBar(
+                  backgroundColor: RpTheme.menuColor,
+                  title: const RpLogoWidget(size: Size(36.0, 36.0)),
+                  actions: [
+                    HomeMenuWidget(
+                      drawerKey: _drawerKey,
+                      scrollController: _scrollController,
+                      menuList: _menuList,
+                      externalMenuList: _externalMenuList,
+                      actionList: _actionList,
+                    ),
+                    RpTheme.spacerLarge,
+                  ],
+                ),
+          body: SingleChildScrollView(
+            controller: _scrollController,
+            child: Column(
+              children: [
+                HomeSection(key: _getKeyByTitle(HomeSectionEnum.home)),
+                AboutSection(key: _getKeyByTitle(HomeSectionEnum.about)),
+                WorkSection(key: _getKeyByTitle(HomeSectionEnum.programs)),
+                ContactSection(key: _getKeyByTitle(HomeSectionEnum.contact)),
+              ],
+            ),
           ),
         ),
       ),
     );
   }
 
-  Key _getKeyByTitle(HomeSectionEnum title) {
-    return _menuList.firstWhere((menu) => menu.title == title).key;
-  }
-
   void _onScroll(double controllerHeight) {
     for (var menu in _menuList) {
-      final wasActive = menu.isActive;
-      menu.activeMenu(controllerHeight);
-      if (wasActive != menu.isActive) setState(() {});
+      if (controllerHeight >= menu.sectionPosition &&
+          controllerHeight < menu.sectionPosition + menu.sectionSize) {
+        _homeCubit.activeMenu(menu.section);
+      }
     }
+  }
+
+  Key _getKeyByTitle(HomeSectionEnum title) {
+    return _menuList.firstWhere((menu) => menu.section == title).key;
   }
 }

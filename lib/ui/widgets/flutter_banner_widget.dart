@@ -18,7 +18,7 @@ class FlutterBannerWidget extends StatelessWidget {
           location: BannerLocation.topEnd,
           message: 'Flutter',
           color: RpTheme.bannerColor,
-          child: child,
+          child: Center(child: child),
         ),
       ),
     );

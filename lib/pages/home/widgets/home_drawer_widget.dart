@@ -30,20 +30,13 @@ class HomeDrawerWidget extends StatelessWidget {
           ListView.separated(
             shrinkWrap: true,
             itemCount: menuList.length,
-            itemBuilder: (_, index) {
-              final menu = menuList[index];
-              return MenuButtonWidget(
-                label: menu.translate(context),
-                isActive: menu.isActive,
-                onPressed: menu.goToSection,
-              );
-            },
+            itemBuilder: (_, index) => MenuButtonWidget(menu: menuList[index]),
             separatorBuilder: (_, __) => RpTheme.spacerSmallX,
           ),
           RpTheme.spacerMedium,
           Container(
-            height: 1.0,
             width: 120.0,
+            height: 1.0,
             color: RpTheme.brandColor,
           ),
           RpTheme.spacerMedium,
@@ -65,8 +58,8 @@ class HomeDrawerWidget extends StatelessWidget {
           ),
           RpTheme.spacerMedium,
           Container(
-            height: 1.0,
             width: 120.0,
+            height: 1.0,
             color: RpTheme.brandColor,
           ),
           RpTheme.spacerMedium,

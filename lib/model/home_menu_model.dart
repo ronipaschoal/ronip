@@ -13,7 +13,7 @@ enum HomeSectionEnum {
 
 extension DiscountPageTypeExtensions on HomeMenu {
   String translate(BuildContext context) {
-    switch (title) {
+    switch (section) {
       case HomeSectionEnum.home:
         return AppLocalizations.of(context)!.home;
       case HomeSectionEnum.about:
@@ -28,16 +28,14 @@ extension DiscountPageTypeExtensions on HomeMenu {
 
 class HomeMenu {
   final GlobalKey key;
-  final HomeSectionEnum title;
-  bool isActive;
+  final HomeSectionEnum section;
   final GlobalKey<ScaffoldState> drawerKey;
   final ScrollController scrollController;
   final List<HomeMenu> previousMenuList;
 
   HomeMenu({
     required this.key,
-    required this.title,
-    this.isActive = false,
+    required this.section,
     required this.drawerKey,
     required this.scrollController,
     this.previousMenuList = const [],
@@ -49,20 +47,6 @@ class HomeMenu {
         0.0,
         (previous, element) => previous + element.sectionSize,
       );
-
-  void activeMenu(double controllerHeight) {
-    isActive = controllerHeight >= sectionPosition &&
-        controllerHeight < sectionPosition + sectionSize;
-  }
-
-  void goToSection() {
-    drawerKey.currentState?.closeDrawer();
-    scrollController.animateTo(
-      sectionPosition,
-      duration: const Duration(milliseconds: 500),
-      curve: Curves.easeInOut,
-    );
-  }
 }
 
 class ExternalMenu {

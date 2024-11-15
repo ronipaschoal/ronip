@@ -9,7 +9,7 @@ sealed class RpTheme {
   static const Color bannerColor = Color(0xFF1A73E8);
   static const Color menuColor = Color(0xCC0B0B18);
   static const Color backgroundColor = Color(0xFF0B0B18);
-  static const Color backgroundColorDark = Color(0xFF040C19);
+  static const Color backgroundColorDark = Color(0xFF0B0B18);
 
   static const double fontSizeLarge = 44.0;
   static const double fontSizeMedium = 24.0;

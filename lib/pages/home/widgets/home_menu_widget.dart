@@ -29,20 +29,13 @@ class HomeMenuWidget extends StatelessWidget {
           scrollDirection: Axis.horizontal,
           shrinkWrap: true,
           itemCount: menuList.length,
-          itemBuilder: (_, index) {
-            final menu = menuList[index];
-            return MenuButtonWidget(
-              label: menu.translate(context),
-              isActive: menu.isActive,
-              onPressed: menu.goToSection,
-            );
-          },
+          itemBuilder: (_, index) => MenuButtonWidget(menu: menuList[index]),
           separatorBuilder: (_, __) => RpTheme.spacerSmallX,
         ),
         RpTheme.spacerMedium,
         Container(
-          height: 24.0,
           width: 1.0,
+          height: 24.0,
           color: RpTheme.brandColor,
         ),
         RpTheme.spacerMedium,
@@ -61,8 +54,8 @@ class HomeMenuWidget extends StatelessWidget {
         ),
         RpTheme.spacerMedium,
         Container(
-          height: 24.0,
           width: 1.0,
+          height: 24.0,
           color: RpTheme.brandColor,
         ),
         ...actionList,
