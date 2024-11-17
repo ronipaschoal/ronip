@@ -73,10 +73,12 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
 
   late final _externalMenuList = [
     ExternalMenu(
+      text: 'LinkedIn',
       icon: 'assets/images/logos/linkedin.svg',
       url: 'https://www.linkedin.com/in/roni-paschoal/',
     ),
     ExternalMenu(
+      text: 'GitHub',
       icon: 'assets/images/logos/github.svg',
       url: 'https://github.com/ronipaschoal/',
     ),
@@ -151,7 +153,10 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                 HomeSection(key: _getKeyByTitle(HomeSectionEnum.home)),
                 AboutSection(key: _getKeyByTitle(HomeSectionEnum.about)),
                 WorkSection(key: _getKeyByTitle(HomeSectionEnum.programs)),
-                ContactSection(key: _getKeyByTitle(HomeSectionEnum.contact)),
+                ContactSection(
+                  key: _getKeyByTitle(HomeSectionEnum.contact),
+                  externalMenuList: _externalMenuList,
+                ),
               ],
             ),
           ),

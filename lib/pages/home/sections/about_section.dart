@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:ronip/pages/home/widgets/section_title_widget.dart';
-import 'package:ronip/pages/home/widgets/section_widget.dart';
+import 'package:ronip/pages/home/widgets/home_section_title_widget.dart';
+import 'package:ronip/pages/home/widgets/home_section_widget.dart';
 import 'package:ronip/ui/theme.dart';
 
 class AboutSection extends StatelessWidget {
@@ -9,10 +9,10 @@ class AboutSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SectionWidget(
+    return HomeSectionWidget(
       child: Column(
         children: [
-          SectionTitleWidget(title: AppLocalizations.of(context)!.aboutMe),
+          HomeSectionTitleWidget(title: AppLocalizations.of(context)!.aboutMe),
           SelectableText(
             AppLocalizations.of(context)!.hybridTechnologyEnthusiast,
             semanticsLabel:

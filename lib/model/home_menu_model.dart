@@ -50,10 +50,12 @@ class HomeMenu {
 }
 
 class ExternalMenu {
+  final String text;
   final String icon;
   final String url;
 
   ExternalMenu({
+    required this.text,
     required this.icon,
     required this.url,
   });
@@ -62,13 +64,15 @@ class ExternalMenu {
     HyperlinkHelper.targetBlank(url);
   }
 
-  Widget get iconWidget => SvgPicture.asset(
-        icon,
-        width: 16,
-        height: 16,
-        colorFilter: const ColorFilter.mode(
-          RpTheme.textColor,
-          BlendMode.srcIn,
-        ),
-      );
+  Widget iconWidget(Size size) {
+    return SvgPicture.asset(
+      icon,
+      width: size.width,
+      height: size.height,
+      colorFilter: const ColorFilter.mode(
+        RpTheme.textColor,
+        BlendMode.srcIn,
+      ),
+    );
+  }
 }

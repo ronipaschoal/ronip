@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ronip/model/home_menu_model.dart';
-import 'package:ronip/pages/home/widgets/menu_button_widget.dart';
+import 'package:ronip/pages/home/widgets/home_menu_button_widget.dart';
 import 'package:ronip/ui/theme.dart';
 
 class HomeDrawerWidget extends StatelessWidget {
@@ -30,7 +30,8 @@ class HomeDrawerWidget extends StatelessWidget {
           ListView.separated(
             shrinkWrap: true,
             itemCount: menuList.length,
-            itemBuilder: (_, index) => MenuButtonWidget(menu: menuList[index]),
+            itemBuilder: (_, index) =>
+                HomeMenuButtonWidget(menu: menuList[index]),
             separatorBuilder: (_, __) => RpTheme.spacerSmallX,
           ),
           RpTheme.spacerMedium,
@@ -50,7 +51,7 @@ class HomeDrawerWidget extends StatelessWidget {
                 final externalMenu = externalMenuList[index];
                 return IconButton(
                   onPressed: externalMenu.goToExternal,
-                  icon: externalMenu.iconWidget,
+                  icon: externalMenu.iconWidget(const Size(16.0, 16.0)),
                 );
               },
               separatorBuilder: (_, __) => RpTheme.spacerSmallX,

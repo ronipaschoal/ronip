@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:ronip/ui/theme.dart';
 
-class SectionTitleWidget extends StatelessWidget {
+class HomeSectionTitleWidget extends StatelessWidget {
   final String title;
 
-  const SectionTitleWidget({
+  const HomeSectionTitleWidget({
     super.key,
     required this.title,
   });

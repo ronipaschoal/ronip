@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:ronip/pages/home/widgets/section_widget.dart';
+import 'package:ronip/pages/home/widgets/home_section_widget.dart';
 import 'package:ronip/ui/theme.dart';
 import 'package:ronip/ui/widgets/logo_widget.dart';
 
@@ -9,7 +9,7 @@ class HomeSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SectionWidget(
+    return HomeSectionWidget(
       child: Column(
         children: [
           const RpLogoWidget(),

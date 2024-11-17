@@ -1,19 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:ronip/helpers/media_query_helper.dart';
 
-class SectionWidget extends StatefulWidget {
+class HomeSectionWidget extends StatefulWidget {
   final Widget child;
 
-  const SectionWidget({
+  const HomeSectionWidget({
     super.key,
     required this.child,
   });
 
   @override
-  State<SectionWidget> createState() => _SectionWidgetState();
+  State<HomeSectionWidget> createState() => _HomeSectionWidgetState();
 }
 
-class _SectionWidgetState extends State<SectionWidget> {
+class _HomeSectionWidgetState extends State<HomeSectionWidget> {
   @override
   Widget build(BuildContext context) {
     return Container(

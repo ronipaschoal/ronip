@@ -4,10 +4,10 @@ import 'package:ronip/model/home_menu_model.dart';
 import 'package:ronip/pages/home/cubit/home_cubit.dart';
 import 'package:ronip/ui/theme.dart';
 
-class MenuButtonWidget extends StatelessWidget {
+class HomeMenuButtonWidget extends StatelessWidget {
   final HomeMenu menu;
 
-  const MenuButtonWidget({
+  const HomeMenuButtonWidget({
     super.key,
     required this.menu,
   });

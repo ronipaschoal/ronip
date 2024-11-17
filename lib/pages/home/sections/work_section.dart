@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:ronip/helpers/hyperlink_helper.dart';
-import 'package:ronip/pages/home/widgets/section_title_widget.dart';
-import 'package:ronip/pages/home/widgets/section_widget.dart';
+import 'package:ronip/pages/home/widgets/home_section_title_widget.dart';
+import 'package:ronip/pages/home/widgets/home_section_widget.dart';
 import 'package:ronip/ui/theme.dart';
 import 'package:ronip/ui/widgets/image_widget.dart';
 
@@ -29,11 +29,14 @@ class WorkSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SectionWidget(
+    return HomeSectionWidget(
       child: Column(
         children: [
-          SectionTitleWidget(title: AppLocalizations.of(context)!.myPrograms),
+          HomeSectionTitleWidget(
+            title: AppLocalizations.of(context)!.myPrograms,
+          ),
           ListView.separated(
+            physics: const NeverScrollableScrollPhysics(),
             padding: EdgeInsets.zero,
             shrinkWrap: true,
             itemCount: _workList.length,
