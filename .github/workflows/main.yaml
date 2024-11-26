@@ -38,21 +38,17 @@ jobs:
           name: web-release
           path: ./build/web
 
-  deploy:
-    name: Deploy Web Build
-    needs: build
+  web-deploy:
+    name: 🎉 Deploy
     runs-on: ubuntu-latest
-
     steps:
-    - name: Download Web Release
-      uses: actions/download-artifact@v4
-      with:
-        name: web-release
-
-    - name: Deploy to gh-pages
-      uses: peaceiris/actions-gh-pages@v4
+    - name: 🚚 Get latest code
+      uses: actions/checkout@v4
+    
+    - name: 📂 Sync files
+      uses: SamKirkland/FTP-Deploy-Action@v4.3.5
       with:
         server: ${{ secrets.FTP_SERVER }}
         username: ${{ secrets.FTP_USERNAME }}
         password: ${{ secrets.FTP_PASSWORD }}
-        server-dir: ./public_html
+        server-dir: ./
