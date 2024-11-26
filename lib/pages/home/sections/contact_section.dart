@@ -44,7 +44,7 @@ class ContactSection extends StatelessWidget {
                     ListView.builder(
                       padding: EdgeInsets.zero,
                       shrinkWrap: true,
-                      itemCount: externalMenuList.length,
+                      itemCount: 1,
                       itemBuilder: (_, index) {
                         final externalMenu = externalMenuList[index];
                         return HomeContactItemWidget(
@@ -80,7 +80,7 @@ class ContactSection extends StatelessWidget {
                       child: ListView.separated(
                         shrinkWrap: true,
                         scrollDirection: Axis.horizontal,
-                        itemCount: externalMenuList.length,
+                        itemCount: 1,
                         itemBuilder: (_, index) {
                           final externalMenu = externalMenuList[index];
                           return HomeContactItemWidget(
