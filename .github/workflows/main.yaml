@@ -50,9 +50,9 @@ jobs:
         name: web-release
 
     - name: Deploy to gh-pages
-      uses: peaceiris/actions-gh-pages@v3
+      uses: peaceiris/actions-gh-pages@v4
       with:
-        server:  ${{ secrets.ftp_server }}
-        username: ${{ secrets.ftp_username }}
-        password: ${{ secrets.ftp_password }}
-        server-dir: public_html/
+        server: ${{ secrets.FTP_SERVER }}
+        username: ${{ secrets.FTP_USERNAME }}
+        password: ${{ secrets.FTP_PASSWORD }}
+        server-dir: ./public_html
