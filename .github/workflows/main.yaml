@@ -42,10 +42,6 @@ jobs:
     name: 🎉 Deploy
     runs-on: ubuntu-latest
     steps:
-    - name: 🚚 Get latest code
-      uses: actions/checkout@v4
-
-    steps:
     - name: Download Web Release
       uses: actions/download-artifact@v4
       with:
