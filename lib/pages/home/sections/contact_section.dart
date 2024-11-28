@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:ronip/helpers/hyperlink_helper.dart';
 import 'package:ronip/helpers/media_query_helper.dart';
 import 'package:ronip/model/home_menu_model.dart';
@@ -18,6 +19,11 @@ class ContactSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    const iconSize = Size(
+      RpTheme.fontSizeLarge,
+      RpTheme.fontSizeLarge,
+    );
+
     return HomeSectionWidget(
       child: Column(
         mainAxisSize: MainAxisSize.min,
@@ -32,10 +38,14 @@ class ContactSection extends StatelessWidget {
                   children: [
                     HomeContactItemWidget(
                       text: 'contato@ronip.dev',
-                      icon: const Icon(
-                        Icons.email,
-                        color: RpTheme.textColor,
-                        size: RpTheme.fontSizeLarge,
+                      icon: SvgPicture.asset(
+                        'assets/images/logos/email.svg',
+                        width: iconSize.width,
+                        height: iconSize.height,
+                        colorFilter: const ColorFilter.mode(
+                          RpTheme.textColor,
+                          BlendMode.srcIn,
+                        ),
                       ),
                       onPressed: () => HyperlinkHelper.mail(
                         'mailto:contato@ronip.dev?subject=Website contact!',
@@ -49,12 +59,7 @@ class ContactSection extends StatelessWidget {
                         final externalMenu = externalMenuList[index];
                         return HomeContactItemWidget(
                           text: externalMenu.text,
-                          icon: externalMenu.iconWidget(
-                            const Size(
-                              RpTheme.fontSizeLarge,
-                              RpTheme.fontSizeLarge,
-                            ),
-                          ),
+                          icon: externalMenu.iconWidget(iconSize),
                           onPressed: externalMenu.goToExternal,
                         );
                       },
@@ -66,10 +71,14 @@ class ContactSection extends StatelessWidget {
                   children: [
                     HomeContactItemWidget(
                       text: 'contato@ronip.dev',
-                      icon: const Icon(
-                        Icons.email,
-                        color: RpTheme.textColor,
-                        size: RpTheme.fontSizeLarge,
+                      icon: SvgPicture.asset(
+                        'assets/images/logos/email.svg',
+                        width: iconSize.width,
+                        height: iconSize.height,
+                        colorFilter: const ColorFilter.mode(
+                          RpTheme.textColor,
+                          BlendMode.srcIn,
+                        ),
                       ),
                       onPressed: () => HyperlinkHelper.mail(
                         'mailto:contato@ronip.dev?subject=Website contact!',
@@ -85,12 +94,7 @@ class ContactSection extends StatelessWidget {
                           final externalMenu = externalMenuList[index];
                           return HomeContactItemWidget(
                             text: externalMenu.text,
-                            icon: externalMenu.iconWidget(
-                              const Size(
-                                RpTheme.fontSizeLarge,
-                                RpTheme.fontSizeLarge,
-                              ),
-                            ),
+                            icon: externalMenu.iconWidget(iconSize),
                             onPressed: externalMenu.goToExternal,
                           );
                         },
