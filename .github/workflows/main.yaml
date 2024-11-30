@@ -2,10 +2,10 @@ name: Web Release
 
 on:
   push:
-    branches:  [ "master" ]
+    branches:  [ "main" ]
 
   pull_request:
-    branches: [ "master" ]
+    branches: [ "main" ]
 
   workflow_dispatch:
 
@@ -40,6 +40,9 @@ jobs:
 
   web-deploy:
     name: 🎉 Deploy
+    needs: [
+      build
+    ]
     runs-on: ubuntu-latest
     steps:
     - name: 🚚 Get latest code
@@ -51,6 +54,7 @@ jobs:
     - name: 📂 Sync files
       uses: SamKirkland/FTP-Deploy-Action@v4.3.5
       with:
+        local-dir: ./build/web
         server: ${{ secrets.FTP_SERVER }}
         username: ${{ secrets.FTP_USERNAME }}
         password: ${{ secrets.FTP_PASSWORD }}
