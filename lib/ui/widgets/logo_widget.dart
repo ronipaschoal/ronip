@@ -41,6 +41,7 @@ class RpLogoWidget extends StatelessWidget {
           asset: asset,
           width: size.width,
           height: size.height,
+          color: RpTheme.textHighlightColor,
         ),
       ],
     );

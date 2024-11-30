@@ -26,6 +26,7 @@ class HomeSection extends StatelessWidget {
             style: TextStyle(
               fontFamily: 'Inkburrow',
               fontSize: RpTheme.fontSizeLarge,
+              color: RpTheme.textHighlightColor,
             ),
           ),
           RpTheme.spacerSmallX,

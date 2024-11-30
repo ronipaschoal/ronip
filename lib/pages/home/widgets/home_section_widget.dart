@@ -20,7 +20,7 @@ class _HomeSectionWidgetState extends State<HomeSectionWidget> {
       constraints: BoxConstraints(
         minHeight: MediaQuery.sizeOf(context).height,
       ),
-      padding: const EdgeInsets.all(42.0),
+      padding: const EdgeInsets.all(48.0),
       child: Center(
         child: SizedBox(
           width: MediaQueryHelper(context).isSmallScreen()

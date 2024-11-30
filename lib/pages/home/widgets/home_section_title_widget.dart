@@ -16,7 +16,10 @@ class HomeSectionTitleWidget extends StatelessWidget {
         SelectableText(
           title,
           semanticsLabel: title,
-          style: const TextStyle(fontSize: RpTheme.fontSizeLarge),
+          style: const TextStyle(
+            fontSize: RpTheme.fontSizeMedium,
+            color: RpTheme.textHighlightColor,
+          ),
           textAlign: TextAlign.center,
         ),
         RpTheme.spacerSmall,
