@@ -12,7 +12,7 @@ class WorkSection extends StatelessWidget {
   static const _workList = [
     {
       'title': 'Angular',
-      'url': 'https://ronipaschoal.com.br/angular/',
+      'url': 'https://angular.ronipaschoal.com.br/',
       'image': 'assets/images/photos/site-roni-paschoal-angularjs.png',
     },
     {
