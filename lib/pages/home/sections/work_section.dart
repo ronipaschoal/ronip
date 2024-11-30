@@ -17,7 +17,7 @@ class WorkSection extends StatelessWidget {
     },
     {
       'title': 'Eremita do Iceberg',
-      'url': 'https://ronipaschoal.com.br/eremita/',
+      'url': 'https://eremitajs.ronipaschoal.com.br/',
       'image': 'assets/images/photos/jogo-js-o-eremita-do-iceberg.png',
     },
     {
