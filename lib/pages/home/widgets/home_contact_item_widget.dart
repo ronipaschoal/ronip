@@ -17,9 +17,15 @@ class HomeContactItemWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: SizedBox(
-        width: 160.0,
-        height: 160.0,
+        width: 180.0,
+        height: 140.0,
         child: IconButton(
+          style: IconButton.styleFrom(
+            backgroundColor: const Color.fromARGB(152, 6, 6, 15),
+            shape: const RoundedRectangleBorder(
+              borderRadius: BorderRadius.all(Radius.circular(16.0)),
+            ),
+          ),
           onPressed: onPressed,
           icon: Column(
             mainAxisAlignment: MainAxisAlignment.center,

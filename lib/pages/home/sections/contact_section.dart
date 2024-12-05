@@ -51,7 +51,9 @@ class ContactSection extends StatelessWidget {
                         'mailto:contato@ronip.dev?subject=Website contact!',
                       ),
                     ),
+                    const SizedBox(height: RpTheme.spacingMedium),
                     ListView.builder(
+                      physics: const NeverScrollableScrollPhysics(),
                       padding: EdgeInsets.zero,
                       shrinkWrap: true,
                       itemCount: 1,
@@ -84,6 +86,7 @@ class ContactSection extends StatelessWidget {
                         'mailto:contato@ronip.dev?subject=Website contact!',
                       ),
                     ),
+                    const SizedBox(width: RpTheme.spacingMedium),
                     SizedBox(
                       height: 160.0,
                       child: ListView.separated(

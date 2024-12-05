@@ -133,6 +133,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                   ),
                 )
               : AppBar(
+                  surfaceTintColor: RpTheme.menuColor,
                   backgroundColor: RpTheme.menuColor,
                   title: const RpLogoWidget(size: Size(36.0, 36.0)),
                   actions: [
