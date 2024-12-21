@@ -16,19 +16,30 @@ class WorkSection extends StatelessWidget {
       'image': 'assets/images/photos/site-roni-paschoal-angularjs.png',
     },
     {
-      'title': 'Eremita do Iceberg',
-      'url': 'https://eremitajs.ronipaschoal.com.br/',
-      'image': 'assets/images/photos/jogo-js-o-eremita-do-iceberg.png',
+      'title': 'Flutter, Eremita do Iceberg',
+      'url': 'https://eremitaflutter.ronipaschoal.com.br/',
+      'image': 'assets/images/photos/flutter-o-eremita-do-iceberg.png',
     },
     {
       'title': 'Reali Plásticos',
       'url': 'https://www.realiplasticos.com.br/',
       'image': 'assets/images/photos/site-reali-plasticos.png',
     },
+    {
+      'title': 'App Flutter, Minha Comanda Eletrônica',
+      'url':
+          'https://play.google.com/store/apps/details?id=com.totvs.thex.minhacomanda',
+      'urlApple':
+          'https://apps.apple.com/br/app/minha-comanda-eletr%C3%B4nica/id6474201107',
+      'image': 'assets/images/photos/minha-comanda-digital.png',
+    },
   ];
 
   @override
   Widget build(BuildContext context) {
+    final isIOS = Theme.of(context).platform == TargetPlatform.iOS;
+    final isMacOS = Theme.of(context).platform == TargetPlatform.macOS;
+
     return HomeSectionWidget(
       child: Column(
         children: [
@@ -47,7 +58,10 @@ class WorkSection extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   IconButton(
-                    onPressed: () => HyperlinkHelper.targetBlank(work['url']!),
+                    onPressed: () => (isIOS || isMacOS) &&
+                            work['urlApple']?.isNotEmpty != null
+                        ? HyperlinkHelper.targetBlank(work['urlApple']!)
+                        : HyperlinkHelper.targetBlank(work['url']!),
                     icon: Column(
                       children: [
                         RpImageWidget(
