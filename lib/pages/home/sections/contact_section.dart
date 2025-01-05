@@ -28,14 +28,20 @@ class ContactSection extends StatelessWidget {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          HomeSectionTitleWidget(
-            title: AppLocalizations.of(context)!.getInTouch,
-          ),
-          Text(AppLocalizations.of(context)!.sayHello),
           RpTheme.spacerLarge,
+          if (!MediaQueryHelper(context).isSmallScreen())
+            HomeSectionTitleWidget(
+              title: HomeSectionEnum.contact.title(context),
+            ),
+          Text(
+            AppLocalizations.of(context)!.sayHello,
+            textAlign: TextAlign.justify,
+          ),
+          RpTheme.spacerLargeX,
           MediaQueryHelper(context).isSmallScreen()
               ? Column(
                   children: [
+                    RpTheme.spacerLargeX2,
                     HomeContactItemWidget(
                       text: 'contato@ronip.dev',
                       icon: SvgPicture.asset(
@@ -51,7 +57,7 @@ class ContactSection extends StatelessWidget {
                         'mailto:contato@ronip.dev?subject=Website contact!',
                       ),
                     ),
-                    const SizedBox(height: RpTheme.spacingMedium),
+                    RpTheme.spacerLargeX,
                     ListView.builder(
                       physics: const NeverScrollableScrollPhysics(),
                       padding: EdgeInsets.zero,

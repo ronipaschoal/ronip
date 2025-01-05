@@ -124,6 +124,17 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
               : null,
           appBar: MediaQueryHelper(context).isSmallScreen()
               ? AppBar(
+                  title: BlocBuilder<HomeCubit, HomeState>(
+                    builder: (context, state) {
+                      return Text(
+                        state.activeMenu.title(context),
+                        style: const TextStyle(
+                          color: RpTheme.textHighlightColor,
+                        ),
+                      );
+                    },
+                  ),
+                  surfaceTintColor: RpTheme.menuColor,
                   backgroundColor: RpTheme.menuColor,
                   leading: IconButton(
                     icon: const RpLogoWidget.menu(),

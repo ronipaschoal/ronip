@@ -21,6 +21,7 @@ sealed class RpTheme {
   static const double spacingMedium = 16.0;
   static const double spacingLarge = 32.0;
   static const double spacingLargeX = 64.0;
+  static const double spacingLargeX2 = 80.0;
 
   static const SizedBox spacerSmallX =
       SizedBox(height: spacingSmallX, width: spacingSmallX);
@@ -32,6 +33,8 @@ sealed class RpTheme {
       SizedBox(height: spacingLarge, width: spacingLarge);
   static const SizedBox spacerLargeX =
       SizedBox(height: spacingLargeX, width: spacingLargeX);
+  static const SizedBox spacerLargeX2 =
+      SizedBox(height: spacingLargeX2, width: spacingLargeX2);
 
   static final theme = ThemeData(
     colorScheme: ColorScheme.fromSeed(seedColor: RpTheme.brandColor),

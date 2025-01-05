@@ -20,15 +20,17 @@ class _HomeSectionWidgetState extends State<HomeSectionWidget> {
       constraints: BoxConstraints(
         minHeight: MediaQuery.sizeOf(context).height,
       ),
-      padding: const EdgeInsets.all(48.0),
-      child: Center(
-        child: SizedBox(
-          width: MediaQueryHelper(context).isSmallScreen()
-              ? null
-              : MediaQuery.sizeOf(context).width * 0.8,
-          child: widget.child,
-        ),
-      ),
+      padding: MediaQueryHelper(context).isSmallScreen()
+          ? const EdgeInsets.symmetric(horizontal: 16.0)
+          : const EdgeInsets.symmetric(horizontal: 48.0),
+      child: MediaQueryHelper(context).isSmallScreen()
+          ? SafeArea(child: widget.child)
+          : Center(
+              child: SizedBox(
+                width: MediaQuery.sizeOf(context).width * 0.8,
+                child: SafeArea(child: widget.child),
+              ),
+            ),
     );
   }
 }

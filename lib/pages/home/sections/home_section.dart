@@ -11,6 +11,7 @@ class HomeSection extends StatelessWidget {
   Widget build(BuildContext context) {
     return HomeSectionWidget(
       child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
           const RpLogoWidget(),
           RpTheme.spacerLarge,
@@ -35,6 +36,7 @@ class HomeSection extends StatelessWidget {
             semanticsLabel: AppLocalizations.of(context)!.flutterSpecialist,
             style: const TextStyle(fontSize: RpTheme.fontSizeMedium),
           ),
+          RpTheme.spacerLargeX2,
         ],
       ),
     );

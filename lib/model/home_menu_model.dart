@@ -4,6 +4,21 @@ import 'package:flutter_svg/svg.dart';
 import 'package:ronip/helpers/hyperlink_helper.dart';
 import 'package:ronip/ui/theme.dart';
 
+extension SectionExtensions on HomeSectionEnum {
+  String title(BuildContext context) {
+    switch (this) {
+      case HomeSectionEnum.home:
+        return '';
+      case HomeSectionEnum.about:
+        return AppLocalizations.of(context)!.aboutMe;
+      case HomeSectionEnum.programs:
+        return AppLocalizations.of(context)!.myPrograms;
+      case HomeSectionEnum.contact:
+        return AppLocalizations.of(context)!.getInTouch;
+    }
+  }
+}
+
 enum HomeSectionEnum {
   home,
   about,
@@ -11,7 +26,7 @@ enum HomeSectionEnum {
   contact,
 }
 
-extension DiscountPageTypeExtensions on HomeMenu {
+extension PageTypeExtensions on HomeMenu {
   String translate(BuildContext context) {
     switch (section) {
       case HomeSectionEnum.home:

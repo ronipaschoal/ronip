@@ -22,7 +22,7 @@ class HomeDrawerWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Drawer(
-      backgroundColor: RpTheme.backgroundColor.withOpacity(0.9),
+      backgroundColor: RpTheme.menuColor,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         mainAxisSize: MainAxisSize.min,
