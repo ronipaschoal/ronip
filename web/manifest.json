@@ -1,11 +1,12 @@
 {
-    "name": "ronip",
-    "short_name": "ronip",
+    "name": "Roni Paschoal",
+    "short_name": "Ronip",
+    "title": "Roni Paschoal",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
     "theme_color": "#0175C2",
-    "description": "A new Flutter project.",
+    "description": "Desenvolvedor com mais de 10 anos de experiência, 4 focados em mobile, atuo hoje com Flutter e Dart e sou pós-graduaado em Dispositivos Móveis pelo IFSP.",
     "orientation": "portrait-primary",
     "prefer_related_applications": false,
     "icons": [
